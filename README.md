@@ -1,8 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EasyPost Shipping Label Generator
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app), integrated with the [EasyPost API](https://www.easypost.com/) for generating and printing shipping labels.
 
-First, run the development server:
+## 🚀 Quick Start
+
+1. **Install dependencies:**
+
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+```
+
+2. **Set your EasyPost API key in an `.env.local` file:**
+
+```env
+EASYPOST_API_KEY=your_api_key_here
+```
+
+3. **Run the development server:**
 
 ```bash
 npm run dev
@@ -10,27 +28,80 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Assumptions
 
-## Learn More
+- Shipments are between U.S. addresses only (validated via Zod schema).
+- Parcel data is assumed to be a single package per shipment.
+- Default sender and recipient data is prefilled for faster testing.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ What Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Address form with validation using [Zod](https://zod.dev/).
+- Rate selection with radio buttons.
+- Integration with EasyPost to create and purchase shipments.
+- Label generation, download, and print functionality.
+- Global loading state via context and modal loader.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 What I’d Improve Next
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **💅 Layout/Styling**
+
+   - Extract repeated classNames into Tailwind components or utilities.
+   - Improve responsiveness and spacing consistency.
+
+2. **🔄 Componentization**
+
+   - Extract `Button`, `Input`, and `FormGroup` components to ensure reuse and DRY code.
+
+3. **📣 Toast Notifications**
+
+   - Add a global toast system (e.g. `react-hot-toast`) to show success and error messages instead of `console.error`.
+
+4. **⚠️ Error Handling**
+
+   - Improve network error handling with user feedback.
+   - Catch and display validation errors per form field more gracefully.
+
+5. **🧪 Testing**
+
+   - Add remaining unit tests using RTL + Jest.
+   - Maintain Test-Driven Development (TDD) discipline moving forward.
+
+6. **📦 Enhancements**
+   - Support multi-parcel shipments.
+   - Allow dynamic address storage for recurring users.
+
+---
+
+## 🧪 Tech Stack
+
+- **Frontend**: React + Next.js 14 (App Router)
+- **Forms**: React Hook Form + Zod
+- **Styling**: TailwindCSS
+- **API Integration**: EasyPost
+- **Testing**: Jest + React Testing Library
+- **Build Tooling**: TypeScript, ESLint, Prettier
+
+---
+
+## 🧭 Deployment
+
+Ready to deploy on platforms like [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/).
+
+For detailed deployment instructions, see [Next.js Deployment Docs](https://nextjs.org/docs/app/building-your-application/deploying).
+
+---
+
+## 📂 License
+
+MIT — feel free to fork, use, and modify for personal or commercial projects.
